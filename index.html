@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 产品说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f2f4f6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: #1e2b3c;
+      line-height: 1.7;
+      padding: 2.5rem 1.2rem;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* 卡片风格 – 浅灰背景、细边框、柔和阴影 */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e7ed;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      padding: 2rem 2rem 2.2rem;
+      margin-bottom: 2.2rem;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    /* Hero区 – 更轻盈 */
+    .hero {
+      text-align: center;
+      padding: 2.8rem 1.5rem 2.2rem;
+      background: #ffffff;
+      border: 1px solid #e2e7ed;
+      border-radius: 16px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: #1e2b3c;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #5f6d7e;
+      font-weight: 400;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero .tagline {
+      font-size: 1rem;
+      color: #3f4e62;
+      max-width: 600px;
+      margin: 0 auto;
+      background: #f7f9fc;
+      padding: 0.8rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid #e5eaef;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 500;
+      color: #1f2b3a;
+      border-left: 4px solid #7b8b9e;
+      padding-left: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #2b3b4e;
+      margin: 1.2rem 0 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: #2c3e4f;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.8rem 0 1.2rem;
+    }
+
+    ul li {
+      padding: 0.4rem 0 0.4rem 1.8rem;
+      position: relative;
+      color: #2c3e4f;
+    }
+
+    ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0.2rem;
+      color: #6f7f91;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .insight-item {
+      background: #fafbfc;
+      border: 1px solid #e8edf2;
+      border-radius: 10px;
+      padding: 1.2rem 1.2rem 1.4rem;
+    }
+
+    .insight-item strong {
+      display: block;
+      font-weight: 500;
+      color: #1f2b3a;
+      margin-bottom: 0.3rem;
+      font-size: 1.05rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #eef0f3;
+      padding: 1rem 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      color: #1f2b3a;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item .a {
+      color: #4a5b6e;
+      font-size: 0.95rem;
+    }
+
+    .btn-soft {
+      display: inline-block;
+      background: transparent;
+      border: 1px solid #cbd3dd;
+      color: #2b3b4e;
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .btn-soft:hover {
+      background: #eef2f7;
+      border-color: #a3b1c2;
+    }
+
+    .note {
+      background: #f7f9fc;
+      border: 1px solid #e4eaf0;
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.2rem 0;
+      font-size: 0.95rem;
+      color: #2f4054;
+    }
+
+    .access-line {
+      margin-top: 1.4rem;
+      padding: 1rem 0 0.2rem;
+      border-top: 1px solid #e5eaef;
+    }
+
+    a {
+      color: #3070b0;
+      text-decoration: none;
+      border-bottom: 1px dotted #b6c8da;
+      transition: border-bottom 0.15s, color 0.15s;
+    }
+
+    a:hover {
+      color: #134a7a;
+      border-bottom: 1px solid #3070b0;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #6f7e91;
+      margin-top: 2.5rem;
+      padding: 1.5rem 0 0.5rem;
+      border-top: 1px solid #dee3ea;
+    }
+
+    @media (max-width: 680px) {
+      body {
+        padding: 1.5rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .card {
+        padding: 1.5rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>爱游戏 · 产品说明</h1>
+    <div class="sub">围绕「爱游戏」主题的内容服务</div>
+    <div class="tagline">从关键词背后的主题展开：游戏陪伴、日常乐趣、社区文化</div>
+  </div>
+
+  <!-- 摘要卡片 -->
+  <div class="card">
+    <h2>概览</h2>
+    <p>「爱游戏」不是某款具体的软件或应用，而是一个以游戏文化、玩家交流与内容分享为切入点的主题站点。它尝试将“热爱游戏”这种感受转化为可阅读、可讨论的日常内容——包含轻松的游戏随笔、工具推荐、短评以及社区话题整理。</p>
+    <p>站点内容偏生活化，不追求硬核评测或商业榜单，更在意普通玩家在游戏中的真实片段：一段剧情、一次合作、一个老游戏的重新发现。适合那些把游戏当作生活一部分，而非单纯胜负结果的人。</p>
+  </div>
+
+  <!-- 亮点 + 场景 双栏 -->
+  <div class="card">
+    <h2>亮点与使用建议</h2>
+    <div class="grid-2">
+      <div class="insight-item">
+        <strong>内容特点</strong>
+        <ul style="margin:0.3rem 0 0;">
+          <li>从玩家视角出发，不堆砌术语</li>
+          <li>涵盖单机、联机、移动游戏等话题</li>
+          <li>定期整理社区讨论与冷门推荐</li>
+          <li>文字风格轻松，配有适量截图示意</li>
+        </ul>
+      </div>
+      <div class="insight-item">
+        <strong>适用场景</strong>
+        <ul style="margin:0.3rem 0 0;">
+          <li>通勤或休息时浏览短文</li>
+          <li>寻找同类玩家的观点与经历</li>
+          <li>了解一些被忽略的老游戏或独立作品</li>
+          <li>作为游戏之外的文化延伸阅读</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 使用建议 + 说明 -->
+  <div class="card">
+    <h2>使用建议</h2>
+    <p>如果你对日常游戏内容感兴趣，可以定期浏览站内更新，参与留言讨论。建议把「爱游戏」当作一个放松型的信息角落——它不追求时效性，更注重内容的可读性与共鸣感。</p>
+    <p>部分文章包含外部链接或引用，均保持非商业化立场。页面结构与内容偏向轻阅读，适合在桌面或移动端自然翻阅。</p>
+
+    <div class="note">
+      <strong>☕ 一点提醒</strong><br>
+      网站内容由爱好者维护，更新节奏随个人精力而定。如果你期待即时新闻或详尽攻略，建议搭配其他专业站点使用。这里更侧重“玩”本身的感觉。
+    </div>
+  </div>
+
+  <!-- FAQ 摘要卡片 -->
+  <div class="card">
+    <h2>常见疑问</h2>
+
+    <div class="faq-item">
+      <div class="q">这个网站主要面向哪些人？</div>
+      <div class="a">对游戏有普通热情的人——不一定是硬核玩家，只要觉得游戏是生活里有趣的一部分，就可能找到共鸣。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="q">内容是自己写的还是聚合的？</div>
+      <div class="a">以原创为主，也会整理社区中有价值的讨论（均会标注来源或改写）。不采集、不洗稿。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="q">有投稿或合作入口吗？</div>
+      <div class="a">当前以个人维护为主，暂未开放投稿。不过欢迎在文章下方留言交流，每一条都会被看到。</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="q">页面上的“爱游戏”链接指向哪里？</div>
+      <div class="a">就是本站在互联网上的地址，点击即可进入主页阅读最新内容。</div>
+    </div>
+
+    <!-- 自然嵌入链接 -->
+    <div class="access-line">
+      <p>如果你希望直接浏览这个以游戏为主题的内容站点，可以进入 <a href="https://site-zh-aiyouxi.com.cn">爱游戏</a> 的主页，看看最近有哪些值得花几分钟阅读的片段。</p>
+      <p style="margin-top:0.3rem;font-size:0.9rem;color:#536477;">（站点使用静态页面，加载快速，无强制弹窗或广告）</p>
+    </div>
+  </div>
+
+  <!-- 可信但克制的访问说明 -->
+  <div class="card" style="background:#fafcff;">
+    <h2>关于访问</h2>
+    <p>该站点通过 GitHub Pages 部署，使用普通 HTTP/HTTPS 协议，未收集个人数据，也不含第三方追踪脚本。内容全部为静态文本与图片，适合在主流浏览器中直接打开。</p>
+    <p>由于是非商业个人项目，偶尔会出现内容暂停更新的情况，但历史文章长期可查。如果你对某个话题感兴趣，可以使用站内分类或标签浏览。</p>
+    <p style="margin-bottom:0.4rem;">
+      <span class="btn-soft" style="pointer-events:none;">📂 纯静态 · 无后台</span>
+      <span class="btn-soft" style="pointer-events:none;margin-left:0.5rem;">🧾 无广告声明</span>
+    </p>
+  </div>
+
+  <!-- 页脚 -->
+  <div class="footer-note">
+    爱游戏 · 从热爱到内容 · 日常更新
+  </div>
+
+</div>
+</body>
+</html>
