@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MK体育 – 一站式运动信息聚合平台</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fde9e0 0%, #f7d7c8 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.25rem 3rem;
+      color: #2e241c;
+    }
+
+    .page-wrapper {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    /* hero */
+    .hero {
+      background: #ffffffdd;
+      backdrop-filter: blur(2px);
+      padding: 3rem 2.5rem 2.8rem;
+      border-radius: 48px 48px 32px 32px;
+      box-shadow: 0 16px 32px -8px rgba(120, 60, 40, 0.18);
+      margin-bottom: 2.5rem;
+      transition: box-shadow 0.2s;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.9rem;
+      font-weight: 520;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #793f1f, #ac5f37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 640px;
+      margin: 0 auto 1.8rem;
+      line-height: 1.7;
+      color: #4d382a;
+    }
+
+    .hero-highlight {
+      display: inline-block;
+      background: #fceee3;
+      padding: 0.6rem 1.6rem;
+      border-radius: 60px;
+      font-weight: 430;
+      font-size: 0.95rem;
+      color: #663f26;
+      border: 1px solid #eccbb5;
+    }
+
+    /* 通用卡片 */
+    .card {
+      background: #ffffffec;
+      backdrop-filter: blur(2px);
+      border-radius: 36px;
+      padding: 2.2rem 2.2rem 2.4rem;
+      box-shadow: 0 8px 20px -6px rgba(90, 50, 30, 0.12);
+      margin-bottom: 2.2rem;
+      transition: all 0.15s ease;
+    }
+
+    .card-title {
+      font-size: 1.6rem;
+      font-weight: 490;
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #3d2a1d;
+    }
+
+    .card-title:before {
+      content: "✦";
+      font-size: 1.3rem;
+      color: #b6764b;
+      margin-right: 0.2rem;
+    }
+
+    /* 优势网格 */
+    .advantage-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .advantage-item {
+      background: #faf3ed;
+      border-radius: 28px;
+      padding: 1.3rem 1.2rem 1.4rem;
+      transition: all 0.1s;
+      border: 1px solid #f2dfd3;
+    }
+
+    .advantage-item h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: #4f3321;
+    }
+
+    .advantage-item p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #544237;
+    }
+
+    /* 说明卡片内双栏 */
+    .explain-two {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 0.2rem;
+    }
+
+    .explain-block {
+      flex: 1 1 200px;
+    }
+
+    .explain-block h4 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 0.35rem;
+      color: #4e321f;
+    }
+
+    .explain-block p {
+      line-height: 1.6;
+      color: #4c3b30;
+    }
+
+    .subtle-link {
+      color: #ac6238;
+      text-decoration: none;
+      border-bottom: 1px dotted #b97a54;
+      transition: border 0.2s, color 0.2s;
+    }
+
+    .subtle-link:hover {
+      border-bottom: 1px solid #774429;
+      color: #774429;
+    }
+
+    /* FAQ 摘要 */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .faq-item {
+      background: #f9ede4;
+      border-radius: 24px;
+      padding: 1.2rem 1.2rem 1.1rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 530;
+      margin-bottom: 0.2rem;
+      color: #4d2f1c;
+    }
+
+    .faq-item p {
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: #4b3a30;
+    }
+
+    /* 底部链接 */
+    .footer-links {
+      background: #f7e6dbcc;
+      backdrop-filter: blur(4px);
+      border-radius: 80px 80px 30px 30px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: center;
+      gap: 1.2rem 2rem;
+      font-size: 0.98rem;
+      margin-top: 2rem;
+      border: 1px solid #ebd2c2;
+    }
+
+    .footer-links a {
+      color: #623e29;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border 0.15s;
+      font-weight: 440;
+    }
+
+    .footer-links a:hover {
+      border-bottom: 1px solid #7a4c33;
+    }
+
+    .footer-links .mk-link {
+      background: #c2845a20;
+      padding: 0.25rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid #cfaa8f;
+      font-weight: 470;
+      color: #4f2e1b;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .footer-links .mk-link:hover {
+      background: #cfaa8f30;
+      border-color: #9d6c4a;
+    }
+
+    .meta-note {
+      text-align: center;
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: #705b4b;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #e3cdbe;
+      margin: 1.4rem 0 1rem;
+      opacity: 0.4;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .hero {
+        padding: 2rem 1.5rem;
+      }
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .card {
+        padding: 1.5rem 1.2rem;
+      }
+      .advantage-grid {
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- hero 区 -->
+  <div class="hero">
+    <h1>MK体育 · 运动信息从这里开始</h1>
+    <p>一个帮你快速了解赛事动态、训练常识与运动社区资讯的轻量平台。无论你关注职业联赛还是日常锻炼，<a href="https://sporthub-mk.com" style="color:#884f2f; text-decoration:underline; text-underline-offset:3px;">MK体育</a> 都尝试用清晰的方式组织你关心的内容。</p>
+    <span class="hero-highlight">⚡ 聚合 · 简洁 · 每日更新</span>
+  </div>
+
+  <!-- 优势区 -->
+  <div class="card">
+    <div class="card-title">为什么值得打开 MK 体育</div>
+    <div class="advantage-grid">
+      <div class="advantage-item">
+        <h3>📋 结构清晰</h3>
+        <p>栏目按运动类别、赛事阶段、热门话题划分，减少信息过载，让你更快定位想看的内容。</p>
+      </div>
+      <div class="advantage-item">
+        <h3>⚙️ 动态提醒</h3>
+        <p>支持关注特定队伍或项目，重要赛果、转会或赛程变动会以轻量方式通知你。</p>
+      </div>
+      <div class="advantage-item">
+        <h3>📚 知识辅助</h3>
+        <p>从规则入门到训练技巧，平台收录了经过筛选的基础文章，适合新手与进阶者。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 说明区 + 场景 -->
+  <div class="card">
+    <div class="card-title">它适合哪些场景？</div>
+    <div class="explain-two">
+      <div class="explain-block">
+        <h4>🏟️ 比赛日查询</h4>
+        <p>想知道下一场焦点战的时间、伤病名单或天气预报？<a href="https://sporthub-mk.com" class="subtle-link">MK体育</a> 收录了多个联赛的赛前信息，并持续维护。</p>
+      </div>
+      <div class="explain-block">
+        <h4>🧘 日常训练参考</h4>
+        <p>没有教练也能获得动作分解、恢复建议与营养贴士。内容由运动爱好者与业余教练共同整理。</p>
+      </div>
+      <div class="explain-block">
+        <h4>🌐 社区与讨论</h4>
+        <p>每个项目页下方都有开放的讨论区，你可以在那里分享见解、提问或留下建议。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 (4条) -->
+  <div class="card" style="padding-bottom: 2rem;">
+    <div class="card-title">常见疑问 · 简答</div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <strong>MK体育 收费吗？</strong>
+        <p>大部分内容免费浏览。部分深度数据或去广告功能可能会在未来以合理方式开放。</p>
+      </div>
+      <div class="faq-item">
+        <strong>信息更新频率？</strong>
+        <p>赛程、实时比分与新闻板块每日刷新多次；训练类文章保持每周 2-4 篇的节奏。</p>
+      </div>
+      <div class="faq-item">
+        <strong>支持哪些运动？</strong>
+        <p>目前覆盖足球、篮球、网球、电竞、田径、游泳与综合格斗，并根据反馈增加新项目。</p>
+      </div>
+      <div class="faq-item">
+        <strong>如何贡献内容？</strong>
+        <p>你可以在社区发帖或通过站内反馈表单提交，编辑团队会审核后展示优质分享。</p>
+      </div>
+    </div>
+    <hr>
+    <p style="font-size: 0.9rem; color:#4d3b2e; margin-top: 0.8rem;">想直接了解某个联赛的近期赛果？试试在站内搜索队伍或关键词。</p>
+  </div>
+
+  <!-- 底部链接 -->
+  <div class="footer-links">
+    <span>了解更多：</span>
+    <a href="https://sporthub-mk.com" class="mk-link">MK体育</a>
+    <a href="#">运动指南</a>
+    <a href="#">隐私说明</a>
+    <a href="#">帮助中心</a>
+    <span style="color:#7d604b;">· 不断改进中</span>
+  </div>
+
+  <div class="meta-note">
+    MK体育 — 保持简洁，专注于运动本身。
+  </div>
+
+</div>
+</body>
+</html>
